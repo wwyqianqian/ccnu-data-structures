@@ -1,7 +1,7 @@
 InitList(&L)
 //  构造空 linear List
 
-DestoryList(&L)
+DestroyList(&L)
 // L 存在，销毁 L
 
 ClearList(&L)
