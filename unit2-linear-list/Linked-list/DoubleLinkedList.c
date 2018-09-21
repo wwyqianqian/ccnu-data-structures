@@ -1,5 +1,5 @@
 // 双向链表
-typedef struct DuLNode{
+typedef struct DuLNode {
     ElemType data;
     struct DuLNode *prior;
     struct DuLNode *next;
