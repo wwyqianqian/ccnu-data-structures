@@ -1,8 +1,9 @@
 #ifndef LIST_FUNCTION_HUB_H
 #define LIST_FUNCTION_HUB_H
+using namespace std; 
 
-const LIST_INIT_SIZE = 100;
-const LIST_INCREMENT_SIZE = 10;
+const int LIST_INIT_SIZE = 100;
+const int LIST_INCREMENT_SIZE = 10;
 
 typedef int ElemType;
 typedef struct {
@@ -39,10 +40,10 @@ void ClearList(List &L) {
 
 // Function4: Return TRUE if the List is empty
 bool ListEmpty(List L) {
-    if (0 == List.length) {
-        return TRUE;
+    if (0 == L.length) {
+        return true;
     } else {
-        return FALSE;
+        return false;
     }
 }
 
@@ -54,10 +55,9 @@ int ListLength(List L) {
 
 
 // Function6: Return the i'th value as e
-int GetElem(List L, int i, ElemType &e) {
+void GetElem(List L, int i, ElemType &e) {
     if (i >= 1 && i <= L.length) {
         e = L.elem[i - 1];
-        return e;
     }
 }
 
@@ -112,6 +112,19 @@ bool ListInsert(List &L, ElemType i, ElemType e) {
     return true;
 }
 
+bool ListInsertCreat(List &L, ElemType i, ElemType e) {
+    if (i < 1 || i > L.length + 1) {
+        return false;
+    }
+    if (L.length >= L.listSize) {
+        return false;
+    }
+    for (int j = L.length; j >= i; j--) {
+        L.elem[j] = L.elem[j - 1];
+    }
+    L.elem[i - 1] = e;
+    return true;
+}
 
 // Function11: Delete element L.elem[i-1] and return it as e
 int ListDelete(List &L, ElemType i, ElemType &e) {
@@ -132,6 +145,7 @@ void ListTraverse(List L) {
     for (int i = 0; i < L.length; ++i) {
         cout << L.elem[i] << " ";
     }
+    cout << endl;
 }
 
 
