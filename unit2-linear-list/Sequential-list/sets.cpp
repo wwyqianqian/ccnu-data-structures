@@ -21,7 +21,6 @@ void union1(List &LA, List &LB) {
 void union2(List LC, List LD, List &LE) {
     int Lc_len = ListLength(LC);
     ElemType e = 0;
-
     for (int i = 1; i <= Lc_len; ++i) { // 把 C 拷贝到 E
         GetElem(LC, i, e);
         ListInsert(LE, i, e);
@@ -39,6 +38,42 @@ void union2(List LC, List LD, List &LE) {
     ListTraverse(LE);
 }
 
+// 求两个集合的交集
+void intersection(List LC, List LD, List &LF) {
+    int Lc_len = ListLength(LC);
+    int Lf_len = ListLength(LF);
+    ElemType e = 0;
+    for (int i = 1; i <= Lc_len; ++i) {
+        GetElem(LC, i, e);
+        if (LocateElem(LD, e)) {
+            ListInsert(LF, ++Lf_len, e);
+        }
+    }
+    ListTraverse(LF);
+}
+
+// 求两个集合的差集
+void  differenceSet(List LC, List LD, List &LG) {
+    int Lc_len = ListLength(LC);
+    ElemType e = 0;
+    for (int i = 1; i <= Lc_len; ++i) { // 把 C 拷贝到 G
+        GetElem(LC, i, e);
+        ListInsert(LG, i, e);
+    }
+
+    int Ld_len = ListLength(LD);
+    int Lg_len = ListLength(LG);
+    for (int i = 1; i <= Lg_len; ++i) {
+        GetElem(LC, i, e);
+        if (LocateElem(LD, e)) {
+            ListDelete(LG, LocateElem(LG, e), e);
+        }
+    }
+    ListTraverse(LG);
+}
+
+
+// 输入集合元素函数 inputElements
 void inputElements(List &mylist) {
     InitList(mylist);
     int lslen = 0;
@@ -52,8 +87,8 @@ void inputElements(List &mylist) {
 }
 
 int main() {
-    List LA, LB, LC, LD, LE;
-    InitList(LE);
+    List LA, LB, LC, LD, LE, LF, LG, LH;
+    InitList(LE); InitList(LF); InitList(LG); InitList(LH);
 
     printf("Input your list LA's length plz : ");
     inputElements(LA);
@@ -82,6 +117,14 @@ int main() {
     ListTraverse(LC);
     printf("This is LD: ");
     ListTraverse(LD);
+
+    printf("\033[43;30mThis is the intersection of two sets LC and LD:\033[0m");
+    intersection(LC, LD, LF);
+
+    printf("\033[43;30mThis is the difference set of two set LC - LD:\033[0m");
+    differenceSet(LC, LD, LG);
+    printf("\033[43;30mThis is the difference set of two set LD - LC:\033[0m");
+    differenceSet(LD, LC, LH);
 
     return 0;
 }
