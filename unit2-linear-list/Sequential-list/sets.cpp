@@ -1,6 +1,6 @@
 // 两种方法求两个集合: A，B 的并集
 #include <iostream>
-#include "listFunctionHub.h"
+#include "../listFunctionHub.h"
 using namespace std;
 
 // 第一种方法，在 A 后面添加 B 里面不重复的元素
