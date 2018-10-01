@@ -30,6 +30,5 @@ int main() {
     cout << "Input your list's length and its elements: " << endl;
     inputElements(LA);
     reverse(LA);
-    
     return 0;
 }
