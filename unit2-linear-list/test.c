@@ -6,12 +6,6 @@ typedef struct LNode {
     struct LNode *next; // pointer
 } LNode, *LinkList;
 
-void InitList(LinkList *L) {
-    (*L) = (LNode *)malloc(sizeof(LNode));
-    (*L)->data = NULL;
-    (*L)->next = NULL;
-}
-
 
 int main() {
     LinkList LA;

@@ -12,5 +12,6 @@ typedef struct LNode {
 // Function1: Initialize a List
 void InitList(LinkList &L) {
     L = (LinkList)malloc(sizeof(LNode));
+    L->data = NULL; // temporary
     L->next = NULL;
 }
