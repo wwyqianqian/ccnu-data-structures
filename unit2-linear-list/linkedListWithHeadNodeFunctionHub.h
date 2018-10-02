@@ -23,10 +23,23 @@ void InitList(LinkList &L) {
 //}
 
 // Function2: Destroy the List
-void DestroyList(List &L) {
-    delete[] L.elem;
-    L.length = 0;
-    L.listSize = 0;
+void DestroyList(LinkList &L) {
+    LNode *p;
+    while (L != NULL) {
+        p = L->next;
+        delete L;
+        L = p;
+    }
+}
+
+// Function3: Clear the existing List
+void ClearList(LinkList &L) {
+    LNode *p;
+    while (L->next != NULL) {
+        p = L->next;
+        L->next = p->next;
+        delete p;
+    }
 }
 
 
