@@ -59,10 +59,48 @@ int ListLength(LinkList L) {
     return cou;
 }
 
+// Function6: Return the i'th value as e
+void GetElem(LinkList L, int i, ElemType &e) {
+    LNode *p;
+    p = L;
+    int cou = 1;
+    while (p != NULL && cou < i) {
+        p = p->next;
+        cou++;
+    }
+    if (cou == i) {
+        e = p->data;
+        return e;
+    } else {
+        return NULL;
+    }
+}
 
+// Function7: Return the serial number in the list L of the first item whose value is equal to e. Else return 0.
+int LocateElem(LinkList L, ElemType e) {
+    LNode *p;
+    p = L;
+    int cou = 1;
+    while (p != NULL && p->data != e) {
+        p = p->next;
+        cou++;
+    }
+    if (p->data == e) {
+        return cou;
+    } else {
+        return 0;
+    }
+}
 
-
-
+// Function8: Return the prior element of cur_e in the list
+int PriorElem(LinkList L, ElemType cur_e, ElemType &pre_e) {
+    int cur_e_serial = LocateElem(L, cur_e);
+    if (cur_e_serial == 1) {
+        return NULL;
+    }
+    pre_e = GetElem(L, cur_e_serial - 1, e);
+    return pre_e;
+}
 
 
 #endif
