@@ -10,9 +10,16 @@ typedef struct LNode {
 
 
 // Function1: Initialize a List
-void InitList(LinkList &L) {
-    L = (LinkList)malloc(sizeof(LNode));
-    L->next = NULL;
+//void InitList(LinkList &L) {
+//    L = (LinkList)malloc(sizeof(LNode));
+//    L->data = NULL;
+//    L->next = NULL;
+//}
+
+void InitList(LinkList *L) {
+    (*L) = (LNode *)malloc(sizeof(LNode));
+    (*L)->data = NULL;
+    (*L)->next = NULL;
 }
 
 
