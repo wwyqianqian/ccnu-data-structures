@@ -37,6 +37,28 @@ void ClearList(LinkList &L) {
     L->data = NULL;
 }
 
+// Function4: Return TRUE if the List is empty
+bool ListEmpty(LinkList L) {
+    if (L == NULL) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+// Function5: Return the number of elements
+int ListLength(LinkList L) {
+    LNode *p;
+    p = L;
+
+    int cou = 0;
+    while (p != NULL) {
+        cou++;
+        p = p->next;
+    }
+    return cou;
+}
+
 
 
 
