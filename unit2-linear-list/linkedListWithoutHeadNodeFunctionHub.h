@@ -155,9 +155,12 @@ bool ListInsert(LinkList &L, ElemType i, ElemType e) {
 
     LNode *q;
     q = L;
-    int count = 1;
-    while (count < (i - 1) && q != NULL) {
-        count++;
+//    int count = 1;
+//    while (count < (i - 1) && q != NULL) {
+//        count++;
+//        q = q->next;
+//    }
+    while (q->next != p) {
         q = q->next;
     }
 
@@ -165,5 +168,43 @@ bool ListInsert(LinkList &L, ElemType i, ElemType e) {
     pNew->next = p;
     return true;
 }
+
+// Function11: Delete element e at location i and return itself
+int ListDelete(LinkList &L, ElemType i, ElemType &e) {
+    LNode *p;
+    p = L;
+    int cou = 1;
+    while (cou < i && p != NULL) {
+        cou++;
+        p = p->next;
+    }
+    if (cou != i || p = NULL) {
+        return false;
+    }
+
+    LNode *q;
+    q = L;
+    while (q->next != p) {
+        q = q->next;
+    }
+
+    q->next = p->next;
+    e = p->data;
+    delete p;
+    return e;
+}
+
+// Function12: List all of the elements
+void ListTraverse(LinkList L) {
+    LNode *p;
+    p = L;
+    cout << p->data << " ";
+    while (p->next != NULL) {
+        cout << p->next->data << " ";
+        p = p->next;
+    }
+    cout << endl;
+}
+
 
 #endif
