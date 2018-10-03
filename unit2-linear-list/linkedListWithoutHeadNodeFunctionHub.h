@@ -75,6 +75,20 @@ void GetElem(LinkList L, int i, ElemType &e) {
         return NULL;
     }
 }
+void GetElemNode(LinkList L, int i, LinkList &e) {
+    LNode *e;
+    e = L;
+    int cou = 1;
+    while (e != NULL && cou < i) {
+        e = e->next;
+        cou++;
+    }
+    if (cou == i) {
+        return e;
+    } else {
+        return NULL;
+    }
+}
 
 // Function7: Return the serial number in the list L of the first item whose value is equal to e. Else return 0.
 int LocateElem(LinkList L, ElemType e) {
@@ -101,6 +115,55 @@ int PriorElem(LinkList L, ElemType cur_e, ElemType &pre_e) {
     pre_e = GetElem(L, cur_e_serial - 1, e);
     return pre_e;
 }
+void PriorElemNode(LinkList L, ElemType cur_e, LinkList &pre_e) {
+    int cur_e_serial = LocateElem(L, cur_e);
+    if (cur_e_serial == 1) {
+        return NULL;
+    }
+    pre_e = GetElemNode(L, cur_e_serial - 1, e);
+    return pre_e;
+}
 
+// Function9: Return the next element of cur_e in the list
+int NextElem(LinkList L, ElemType cur_e, ElemType &next_e) {
+    int cur_e_serial = LocateElem(L, cur_e);
+    if (cur_e_serial == ListLength(L)) {
+        return NULL;
+    }
+    next_e = GetElem(L, cur_e_serial + 1, e);
+    return next_e;
+}
+
+// Function10: Insert element e at position i
+bool ListInsert(LinkList &L, ElemType i, ElemType e) {
+    LNode *p;
+    p = L;
+    int cou = 1;
+    while (cou < i && p != NULL) {
+        cou++;
+        p = p->next;
+    }
+    if (cou != i || p == NULL) {
+        return false;
+    }
+    LNode *pNew;
+    InitList(pNew);
+    if (NULL == pNew) {
+        printf("Error in dynamic memory allocating");
+    }
+    pNew->data = e;
+
+    LNode *q;
+    q = L;
+    int count = 1;
+    while (count < (i - 1) && q != NULL) {
+        count++;
+        q = q->next;
+    }
+
+    q->next = pNew;
+    pNew->next = p;
+    return true;
+}
 
 #endif
