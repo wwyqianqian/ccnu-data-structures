@@ -1,5 +1,5 @@
 #include <iostream>
-#include "linkedListWithHeadNodeFunctionHub.h"
+#include "linkedListWithoutHeadNodeFunctionHub.h"
 
 
 
@@ -9,6 +9,7 @@ int main() {
     printf("%p \n", LA);
     InitList(LA);
     printf("%p \n", LA);
+
     DestroyList(LA);
     printf("%p \n", LA);
     return 0;

@@ -70,23 +70,22 @@ void GetElem(LinkList L, int i, ElemType &e) {
     }
     if (cou == i) {
         e = p->data;
-        return e;
     } else {
-        return NULL;
+        e = NULL;
     }
 }
 void GetElemNode(LinkList L, int i, LinkList &e) {
-    LNode *e;
-    e = L;
+    LNode *p;
+    p = L;
     int cou = 1;
-    while (e != NULL && cou < i) {
-        e = e->next;
+    while (p != NULL && cou < i) {
+        p = p->next;
         cou++;
     }
     if (cou == i) {
-        return e;
+        e = p;
     } else {
-        return NULL;
+        e = NULL;
     }
 }
 
@@ -108,29 +107,31 @@ int LocateElem(LinkList L, ElemType e) {
 
 // Function8: Return the prior element of cur_e in the list
 int PriorElem(LinkList L, ElemType cur_e, ElemType &pre_e) {
-    int cur_e_serial = LocateElem(L, cur_e);
-    if (cur_e_serial == 1) {
-        return NULL;
+    LNode *q;
+    q = L;
+    while (q->next->data != cur_e) {
+        q = q->next;
     }
-    pre_e = GetElem(L, cur_e_serial - 1, e);
+    pre_e = q->data;
     return pre_e;
 }
 void PriorElemNode(LinkList L, ElemType cur_e, LinkList &pre_e) {
-    int cur_e_serial = LocateElem(L, cur_e);
-    if (cur_e_serial == 1) {
-        return NULL;
+    LNode *q;
+    q = L;
+    while (q->next->data != cur_e) {
+        q = q->next;
     }
-    pre_e = GetElemNode(L, cur_e_serial - 1, e);
-    return pre_e;
+    pre_e = q;
 }
 
 // Function9: Return the next element of cur_e in the list
 int NextElem(LinkList L, ElemType cur_e, ElemType &next_e) {
-    int cur_e_serial = LocateElem(L, cur_e);
-    if (cur_e_serial == ListLength(L)) {
-        return NULL;
+    LNode *q;
+    q = L->next;
+    while (q->data != cur_e) {
+        q = q->next;
     }
-    next_e = GetElem(L, cur_e_serial + 1, e);
+    next_e = q->next->data;
     return next_e;
 }
 
@@ -178,7 +179,7 @@ int ListDelete(LinkList &L, ElemType i, ElemType &e) {
         cou++;
         p = p->next;
     }
-    if (cou != i || p = NULL) {
+    if (cou != i || p == NULL) {
         return false;
     }
 
