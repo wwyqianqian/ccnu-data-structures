@@ -16,6 +16,71 @@ void InitList(LinkList &L) {
     L->next = NULL;
 }
 
+LinkList LinkedListCreatHeadInsert1(LinkList &L) {
+    L = (LinkList)malloc(sizeof(LNode));
+    L->next = NULL;
+    L->data = NULL;
+
+    ElemType x;
+    scanf("%d", &x);
+    L->data = x;
+
+    LNode *p;
+    scanf("%d", &x);
+    while(x != 9999) {
+        p = (LNode *)malloc(sizeof(LNode));
+        p->data = x;
+        p->next = L->next;
+        L->next = p;
+        scanf("%d", &x);
+    }
+    return L;
+}
+LinkList LinkedListCreatHeadInsert2(LinkList &L) {
+    L = (LinkList)malloc(sizeof(LNode));
+    L->next = NULL;
+    L->data = NULL;
+
+    ElemType x;
+    scanf("%d", &x);
+    L->data = x;
+
+    LNode *p;
+    scanf("%d", &x);
+    while(x != 9999) {
+        p = (LNode *)malloc(sizeof(LNode));
+        p->data = x;
+        p->next = L;
+        L = p;
+        scanf("%d", &x);
+    }
+    return L;
+}
+LinkList LinkedListCreatTailInsert(LinkList &L) {
+    L = (LinkList)malloc(sizeof(LNode));
+    L->next = NULL;
+    L->data = NULL;
+
+    ElemType x;
+    scanf("%d", &x);
+    if (x == 9999) {
+        return L;
+    }
+    L->data = x;
+
+    LNode *s; LNode *p; p = L;
+    scanf("%d", &x);
+    while (x != 9999) {
+        s = (LinkList)malloc(sizeof(LNode));
+        s->data = x;
+        p->next = s;
+        p = s;
+        scanf("%d", &x);
+    }
+    p->next = NULL;
+    return L;
+}
+
 // Function2: Destroy the List
 void DestroyList(LinkList &L) {
     LNode *p;
@@ -39,7 +104,7 @@ void ClearList(LinkList &L) {
 
 // Function4: Return TRUE if the List is empty
 bool ListEmpty(LinkList L) {
-    if (L == NULL) {
+    if (L->data == NULL && L->next == NULL) {
         return 1;
     } else {
         return 0;
@@ -48,6 +113,9 @@ bool ListEmpty(LinkList L) {
 
 // Function5: Return the number of elements
 int ListLength(LinkList L) {
+    if (L->data == NULL && L->next == NULL) {
+        return 0;
+    }
     LNode *p;
     p = L;
 
@@ -71,7 +139,7 @@ void GetElem(LinkList L, int i, ElemType &e) {
     if (cou == i) {
         e = p->data;
     } else {
-        e = NULL;
+        cout << "NULL";
     }
 }
 void GetElemNode(LinkList L, int i, LinkList &e) {
@@ -97,6 +165,9 @@ int LocateElem(LinkList L, ElemType e) {
     while (p != NULL && p->data != e) {
         p = p->next;
         cou++;
+    }
+    if (p == NULL) {
+        return 0;
     }
     if (p->data == e) {
         return cou;
@@ -127,9 +198,13 @@ void PriorElemNode(LinkList L, ElemType cur_e, LinkList &pre_e) {
 // Function9: Return the next element of cur_e in the list
 int NextElem(LinkList L, ElemType cur_e, ElemType &next_e) {
     LNode *q;
-    q = L->next;
-    while (q->data != cur_e) {
+    q = L;
+    while (q->data != cur_e && q != NULL) {
         q = q->next;
+    }
+    if (q->data == cur_e && q->next == NULL) {
+        cout << "NULL";
+        return next_e = NULL;
     }
     next_e = q->next->data;
     return next_e;
@@ -137,6 +212,15 @@ int NextElem(LinkList L, ElemType cur_e, ElemType &next_e) {
 
 // Function10: Insert element e at position i
 bool ListInsert(LinkList &L, ElemType i, ElemType e) {
+    while (i == 1) {
+        LNode *pNew;
+        InitList(pNew);
+        pNew->data = e;
+        pNew->next = L;
+        L = pNew;
+        return true;
+    }
+
     LNode *p;
     p = L;
     int cou = 1;
@@ -156,15 +240,9 @@ bool ListInsert(LinkList &L, ElemType i, ElemType e) {
 
     LNode *q;
     q = L;
-//    int count = 1;
-//    while (count < (i - 1) && q != NULL) {
-//        count++;
-//        q = q->next;
-//    }
     while (q->next != p) {
         q = q->next;
     }
-
     q->next = pNew;
     pNew->next = p;
     return true;
@@ -172,6 +250,13 @@ bool ListInsert(LinkList &L, ElemType i, ElemType e) {
 
 // Function11: Delete element e at location i and return itself
 int ListDelete(LinkList &L, ElemType i, ElemType &e) {
+    if (i == 1) {
+        LNode *p; p = L;
+        L = L->next;
+        delete p;
+        return true;
+    }
+
     LNode *p;
     p = L;
     int cou = 1;

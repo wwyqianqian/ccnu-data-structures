@@ -22,6 +22,43 @@ void InitList(LinkList &L) {
 //    (*L)->next = NULL;
 //}
 
+LinkList LinkedListCreatHeadInsert(LinkList &L) {
+    L = (LinkList)malloc(sizeof(LNode));
+    L->next = NULL;
+    L->data = NULL;
+
+    ElemType x;
+    scanf("%d", &x);
+    LNode *p;
+    while(x != 9999) {
+        p = (LNode *)malloc(sizeof(LNode));
+        p->data = x;
+        p->next = L->next;
+        L->next = p;
+        scanf("%d", &x);
+    }
+    return L;
+}
+
+LinkList LinkedListCreatTailInsert(LinkList &L) {
+    L = (LinkList)malloc(sizeof(LNode));
+    L->next = NULL;
+    L->data = NULL;
+    LNode *s; LNode *p; p = L;
+
+    ElemType x;
+    scanf("%d", &x);
+    while (x != 9999) {
+        s = (LinkList)malloc(sizeof(LNode));
+        s->data = x;
+        p->next = s;
+        p = s;
+        scanf("%d", &x);
+    }
+    p->next = NULL;
+    return L;
+}
+
 // Function2: Destroy the List
 void DestroyList(LinkList &L) {
     LNode *p;
@@ -81,7 +118,7 @@ void GetElem(LinkList L, int i, ElemType &e) {
 }
 void GetElemNode(LinkList L, int i, LinkList &e) {
     LNode *p;
-    p = L->next;
+    p = L; // ???玄学 头结点的问题吗
     int cou = 1;
     while (p != NULL && cou < i) {
         p = p->next;
@@ -103,11 +140,13 @@ int LocateElem(LinkList L, ElemType e) {
         p = p->next;
         cou++;
     }
-    if (p->data == e) {
-        return cou;
-    } else {
+    if (p == NULL) {
         return 0;
     }
+    if (p->data == e) {
+        return cou;
+    }
+
 }
 
 // Function8: Return the prior element of cur_e in the list
@@ -123,7 +162,7 @@ int PriorElem(LinkList L, ElemType cur_e, ElemType &pre_e) {
 void PriorElemNode(LinkList L, ElemType cur_e, LinkList &pre_e) {
     LNode *q;
     q = L;
-    while (q->next->data != cur_e) {
+    while (q->next->next->data != cur_e) {
         q = q->next;
     }
     pre_e = q;
@@ -133,8 +172,11 @@ void PriorElemNode(LinkList L, ElemType cur_e, LinkList &pre_e) {
 int NextElem(LinkList L, ElemType cur_e, ElemType &next_e) {
     LNode *q;
     q = L->next;
-    while (q->data != cur_e) {
+    while (q->data != cur_e && q != NULL) {
         q = q->next;
+    }
+    if (q->next == NULL) {
+        cout << "NULL";
     }
     next_e = q->next->data;
     return next_e;
@@ -160,19 +202,21 @@ bool ListInsert(LinkList &L, ElemType i, ElemType e) {
     pNew->data = e;
 
     LNode *q;
-    q = L->next;
-//    int count = 1;
-//    while (count < (i - 1) && q != NULL) {
-//        count++;
-//        q = q->next;
-//    }
+    q = L;
     while (q->next != p) {
         q = q->next;
     }
-
     q->next = pNew;
     pNew->next = p;
-    return true;
+    return true; // 修改为下面来解决在位置1插入的问题，但受到函数6影响
+//    LNode *pre_node;
+//    GetElemNode(L, i, pre_node);
+//    LNode *pNew;
+//    InitList(pNew);
+//    pNew->data = e;
+//
+//    pNew->next = pre_node->next;
+//    pre_node->next = pNew;
 }
 
 // Function11: Delete element e at location i and return itself
@@ -189,12 +233,12 @@ int ListDelete(LinkList &L, ElemType i, ElemType &e) {
     }
 
     LNode *q;
-    q = L->next;
+    q = L;
     while (q->next != p) {
         q = q->next;
     }
 
-    q->next = p->next;
+    q->next = p->next; // 只有1位的玄学
     e = p->data;
     delete p;
     return e;
