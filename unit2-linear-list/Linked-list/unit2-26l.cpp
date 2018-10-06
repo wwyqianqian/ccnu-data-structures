@@ -32,15 +32,49 @@ LinkList LinkedListCreatTailInsert(LinkList &L) {
     return L;
 }
 
-void PriorElemNode(LinkList L, ElemType cur_e, LinkList &pre_e) {
-    LNode *q;
-    q = L;
-    while (q->next->next->data != cur_e) {
-        q = q->next;
+int LocateElem(LinkList L, ElemType e) {
+    LNode *p;
+    p = L->next;
+    int cou = 1;
+    while (p != NULL && p->data != e) {
+        p = p->next;
+        cou++;
     }
-    pre_e = q;
+    if (p == NULL) {
+        return 0;
+    }
+    if (p->data == e) {
+        return cou;
+    }
 }
 
+bool ListInsert(LinkList &L, ElemType i, ElemType e) {
+    LNode *p;
+    p = L->next;
+    int cou = 1;
+    while (cou < i && p != NULL) {
+        cou++;
+        p = p->next;
+    }
+    if (cou != i || p == NULL) {
+        return false;
+    }
+    LNode *pNew;
+    InitList(pNew);
+    if (NULL == pNew) {
+        printf("Error in dynamic memory allocating");
+    }
+    pNew->data = e;
+
+    LNode *q;
+    q = L;
+    while (q->next != p) {
+        q = q->next;
+    }
+    q->next = pNew;
+    pNew->next = p;
+    return true;
+}
 
 void ListTraverse(LinkList L) {
     LNode *p;
@@ -53,34 +87,15 @@ void ListTraverse(LinkList L) {
     cout << endl;
 }
 
-void InsertElem(LinkList &L, ElemType c, ElemType e) {
-    LNode *p; p = L->next;
-    if (p->data != c) {
-        p = p->next;
-    }
-
-    LNode *pre_e;
-    PriorElemNode(L, c, pre_e);
-    ListTraverse(pre_e);
-
-    LNode *pNew;
-    InitList(pNew);
-    pNew->data = e;
-    pNew->next = p;
-    pre_e->next = pNew;
-
-}
-
 
 int main() {
     LinkList LA;
     LinkedListCreatTailInsert(LA);
-//    ListTraverse(LA);
 
-    InsertElem(LA, 'a', 'h');
+
+    cout << LocateElem(LA, 'a');
+    ListInsert(LA, LocateElem(LA, 'a'), 'a');
     ListTraverse(LA);
 
     return 0;
-
-
 }
