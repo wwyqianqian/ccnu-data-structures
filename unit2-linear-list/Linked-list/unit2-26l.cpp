@@ -76,6 +76,30 @@ bool ListInsert(LinkList &L, ElemType i, ElemType e) {
     return true;
 }
 
+int ListDelete(LinkList &L, ElemType i, ElemType &e) {
+    LNode *p;
+    p = L->next;
+    int cou = 1;
+    while (cou < i && p != NULL) {
+        cou++;
+        p = p->next;
+    }
+    if (cou != i || p == NULL) {
+        return false;
+    }
+
+    LNode *q;
+    q = L;
+    while (q->next != p) {
+        q = q->next;
+    }
+
+    q->next = p->next;
+    e = p->data;
+    delete p;
+    return e;
+}
+
 void ListTraverse(LinkList L) {
     LNode *p;
     p = L->next;
@@ -93,9 +117,11 @@ int main() {
     LinkedListCreatTailInsert(LA);
 
 
-    cout << LocateElem(LA, 'a');
     ListInsert(LA, LocateElem(LA, 'a'), 'a');
     ListTraverse(LA);
 
+    ElemType e;
+    ListDelete(LA, LocateElem(LA, 'z'), e);
+    ListTraverse(LA);
     return 0;
 }
