@@ -146,7 +146,7 @@ int LocateElem(LinkList L, ElemType e) {
     if (p->data == e) {
         return cou;
     }
-
+    return 0;
 }
 
 // Function8: Return the prior element of cur_e in the list
@@ -183,32 +183,49 @@ int NextElem(LinkList L, ElemType cur_e, ElemType &next_e) {
 }
 
 // Function10: Insert element e at position i
+
+
 bool ListInsert(LinkList &L, ElemType i, ElemType e) {
-    LNode *p;
-    p = L->next;
-    int cou = 1;
-    while (cou < i && p != NULL) {
-        cou++;
+    LNode *p = L;
+    for (int cou = 0; cou < i - 1 && p; ++cou) {
         p = p->next;
     }
-    if (cou != i || p == NULL) {
-        return false;
-    }
-    LNode *pNew;
-    InitList(pNew);
-    if (NULL == pNew) {
-        printf("Error in dynamic memory allocating");
-    }
-    pNew->data = e;
+    
+    LNode *q = new LNode;
+    q->data = e;
+    q->next = p->next;
+    p->next = q;
+    return true;
+    
 
-    LNode *q;
-    q = L;
-    while (q->next != p) {
-        q = q->next;
-    }
-    q->next = pNew;
-    pNew->next = p;
-    return true; // 修改为下面来解决在位置1插入的问题，但受到函数6影响
+}
+//     LNode *p;
+//     p = L->next;
+//     int cou = 1;
+//     while (cou < i && p != NULL) {
+//         cou++;
+//         p = p->next;
+//     }
+//     if (cou != i || p == NULL) {
+//         return false;
+//     }
+//     LNode *pNew;
+//     InitList(pNew);
+//     if (NULL == pNew) {
+//         printf("Error in dynamic memory allocating");
+//     }
+//     pNew->data = e;
+
+//     LNode *q;
+//     q = L;
+//     while (q->next != p) {
+//         q = q->next;
+//     }
+//     q->next = pNew;
+//     pNew->next = p;
+//     return true;
+// }
+// 修改为下面来解决在位置1插入的问题，但受到函数6影响
 //    LNode *pre_node;
 //    GetElemNode(L, i, pre_node);
 //    LNode *pNew;
@@ -217,7 +234,7 @@ bool ListInsert(LinkList &L, ElemType i, ElemType e) {
 //
 //    pNew->next = pre_node->next;
 //    pre_node->next = pNew;
-}
+
 
 // Function11: Delete element e at location i and return itself
 int ListDelete(LinkList &L, ElemType i, ElemType &e) {
