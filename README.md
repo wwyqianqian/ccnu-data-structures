@@ -5,13 +5,29 @@
 
 * 顺序表
   * [手写顺序表的 12 种操作的头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/listFunctionHub.h)
-  * [求两个集合的交集、并集、差集](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/sets.cpp)
-  * [把顺序表倒序](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/reverse.cpp)
-  * [比较两个字符串大小](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/compare.cpp)
+  * [实验课上机1: 求两个集合的交集、并集、差集](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/sets.cpp)
+  * [实验课上机2: 比较两个字符串大小](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/compare.cpp)
   * [书上简单例题](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/SequentialListFunctionsExample.cpp)
 
 * 链表
-  * [手写有头结点单链表的 12 种操作](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/linkedListWithHeadNodeFunctionHub.h)
-  * [手写无头结点单链表的 12 种操作](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/linkedListWithoutHeadNodeFunctionHub.h)
+  * [手写有头结点单链表的 12 种操作头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/linkedListWithHeadNodeFunctionHub.h)
+  * [手写无头结点单链表的 12 种操作头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/linkedListWithoutHeadNodeFunctionHub.h)
   * [书上简单操作例子](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/LinkedListFunctionsExample.c)
-    
+  * 实验课上机3: 使用链表求集合的交并差
+    * [有头结点链表](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/sets.cpp)
+    * [无头结点链表](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/withoutHeadNodeSets.cpp)
+
+#### 第四章栈和队列
+
+* 栈
+  * 顺序栈
+    * [手写顺序栈的 9 种操作的头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit4-stack-queue/stack/Sequential-stack/sequentialStackFunHub.h)
+  * 链栈
+    * 手写链栈的 9 种操作的头文件
+
+#### 章末测试卷编程题目解答
+ 
+* 第二章检测卷
+  * [把顺序表倒序](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/reverse.cpp)
+  * [按照 26 个字母对链表进行字母的插入删除等操作](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/unit2-26l.cpp)
+  * [输出链表长度](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/unit2-count.cpp)
