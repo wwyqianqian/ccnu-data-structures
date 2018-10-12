@@ -212,39 +212,24 @@ int NextElem(LinkList L, ElemType cur_e, ElemType &next_e) {
 
 // Function10: Insert element e at position i
 bool ListInsert(LinkList &L, ElemType i, ElemType e) {
-    while (i == 1) {
-        LNode *pNew;
-        InitList(pNew);
-        pNew->data = e;
-        pNew->next = L;
-        L = pNew;
+     while (i == 1) {         
+         L->data = e;
+         L->next = NULL;      
+         return true;
+     }
+ 
+    while (i != 1) {
+        LNode *p = L;
+        for (int cou = 1; cou < i - 1 && p; ++cou) {
+            p = p->next;
+        }
+    
+        LNode *q = new LNode;
+        q->data = e;
+        q->next = p->next;
+        p->next = q;
         return true;
     }
-
-    LNode *p;
-    p = L;
-    int cou = 1;
-    while (cou < i && p != NULL) {
-        cou++;
-        p = p->next;
-    }
-    if (cou != i || p == NULL) {
-        return false;
-    }
-    LNode *pNew;
-    InitList(pNew);
-    if (NULL == pNew) {
-        printf("Error in dynamic memory allocating");
-    }
-    pNew->data = e;
-
-    LNode *q;
-    q = L;
-    while (q->next != p) {
-        q = q->next;
-    }
-    q->next = pNew;
-    pNew->next = p;
     return true;
 }
 

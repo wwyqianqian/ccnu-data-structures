@@ -1,6 +1,6 @@
 // 两种方法求两个集合: A，B 的并集
 #include <iostream>
-#include "linkedListWithHeadNodeFunctionHub.h"
+#include "../linkedListWithHeadNodeFunctionHub.h"
 using namespace std;
 
 
