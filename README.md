@@ -26,8 +26,8 @@
     * 手写链栈的 9 种操作的头文件
 
 #### 章末测试卷编程题目解答
- 
+
 * 第二章检测卷
-  * [把顺序表倒序](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/reverse.cpp)
+  * [把顺序表倒序](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Sequential-list/unit2-reverse.cpp)
   * [按照 26 个字母对链表进行字母的插入删除等操作](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/unit2-26l.cpp)
   * [输出链表长度](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/unit2-count.cpp)
