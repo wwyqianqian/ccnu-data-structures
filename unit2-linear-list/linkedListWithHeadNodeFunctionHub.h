@@ -1,5 +1,5 @@
-#ifndef Linked_LIST_WITH_HEAD_NODE_FUNCTION_HUB_H
-#define Linked_LIST_WITH_HEAD_NODE_FUNCTION_HUB_H
+#ifndef LINKED_LIST_WITH_HEAD_NODE_FUNCTION_HUB_H
+#define LINKED_LIST_WITH_HEAD_NODE_FUNCTION_HUB_H
 using namespace std;
 
 typedef int ElemType;
