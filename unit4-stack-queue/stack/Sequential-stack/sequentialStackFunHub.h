@@ -1,5 +1,5 @@
-#ifndef SEQUENTIAL_STACK_FUNCTION_HUB_H;
-#define SEQUENTIAL_STACK_FUNCTION_HUB_H;
+#ifndef SEQUENTIAL_STACK_FUNCTION_HUB_H
+#define SEQUENTIAL_STACK_FUNCTION_HUB_H
 using namespace std;
 
 const STACK_INIT_SIZE = 100;
@@ -22,7 +22,7 @@ void InitStack(SqStack &S) {
 }
 
 // Function2: Destroy the stack
-void Destroy(SqStack &S) {
+void DestroyStack(SqStack &S) {
     if (!S.elem) {
         cout << "error";
         return ERROR;
