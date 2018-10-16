@@ -13,10 +13,9 @@ typedef LinkList LinkStack;
 
 // Function1: Initialize a linked stack
 void InitStack(LinkStack &S) {
-//    LNode *S = new LNode;
-//    S->data = NULL; // temporary
-//    S->next = NULL;
-    S = nullptr;
+    S = new LNode;
+    S->data = NULL; // temporary
+    S->next = nullptr;
 }
 
 
@@ -39,13 +38,13 @@ void ClearStack(LinkStack &S) {
         S->next = p->next;
         delete p;
     }
-    S->data = nullptr;
+    S->data = NULL;
 }
 
 
 // Function4: Return TRUE if the Stack is empty
 bool StackEmpty(LinkStack S) {
-    return !S;
+    return S->data == NULL && S->next == nullptr;
 }
 
 
@@ -58,7 +57,7 @@ int StackLength(LinkStack S) {
     p = S;
 
     int cou = 0;
-    while (p != NULL) {
+    while (p != nullptr) {
         cou++;
         p = p->next;
     }
@@ -107,6 +106,7 @@ bool StackTraverse(LinkStack S) {
         cout << p->data << " ";
         p = p->next;
     }
+    return true;
 }
 
 
