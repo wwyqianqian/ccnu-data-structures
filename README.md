@@ -14,8 +14,8 @@
   * [手写无头结点单链表的 12 种操作头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/linkedListWithoutHeadNodeFunctionHub.h)
   * [书上简单操作例子](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/LinkedListFunctionsExample.c)
   * 实验课上机3: 使用链表求集合的交并差
-    * [有头结点链表](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/sets.cpp)
-    * [无头结点链表](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/withoutHeadNodeSets.cpp)
+    * [有头结点链表的方法](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/sets.cpp)
+    * [无头结点链表的方法](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit2-linear-list/Linked-list/withoutHeadNodeSets.cpp)
 
 #### 第四章栈和队列
 
@@ -23,7 +23,14 @@
   * 顺序栈
     * [手写顺序栈的 9 种操作的头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit4-stack-queue/stack/Sequential-stack/sequentialStackFunHub.h)
   * 链栈
-    * 手写链栈的 9 种操作的头文件
+    * [手写无头结点链栈的 9 种操作的头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit4-stack-queue/stack/Linked-stack/linkedStackWithoutHeadFunHub.h)
+
+* 队列
+  * 链队列
+    * 手写有头结点链队列的 9 种操作头文件
+  * 循环队列
+    * 手写循环队列的 9 种操作的头文件
+    * 实现杨辉三角
 
 #### 章末测试卷编程题目解答
 
