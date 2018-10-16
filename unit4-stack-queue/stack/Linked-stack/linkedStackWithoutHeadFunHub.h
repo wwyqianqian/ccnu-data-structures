@@ -54,7 +54,7 @@ int StackLength(LinkStack S) {
         return 0;
     }
     LNode *p;
-    p = S;
+    p = S->next;
 
     int cou = 0;
     while (p != nullptr) {
