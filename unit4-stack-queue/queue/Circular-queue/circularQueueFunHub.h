@@ -54,7 +54,7 @@ int QueueLength(SqQueue Q) {
 
 
 // Func6: Get the head data of the queue, store it as e
-bool GetHead(SqQueue Q, ElemType &e) {
+bool GetHead(SqQueue Q, QElemType &e) {
     if (Q.front == Q.rear) {
         return false;
     } else {
@@ -65,7 +65,7 @@ bool GetHead(SqQueue Q, ElemType &e) {
 
 
 // Func7: Insert an element 'e' to the queue
-void EnQueue(SqQueue &Q, ElemType e) {
+void EnQueue(SqQueue &Q, QElemType e) {
     if ((Q.rear + 1) % Q.queuesize == Q.front) {
         incrementQueuesize(Q);
     }
@@ -73,9 +73,31 @@ void EnQueue(SqQueue &Q, ElemType e) {
     Q.rear = (Q.rear + 1) % Q.queuesize;
 }
 
+void incrementQueuesize(SqQueue &Q) {
+    QElemType a[];
+    a = new QElemType[Q.queuesize + Q.incrementsize];
+    for (int k = 0; k < Q.queuesize - 1; ++k) {
+        a[k] = Q.elem[(Q.front + k) % Q.queuesize];
+    }
+    delete[] Q.elem;
+    Q.elem = a;
+    Q.front = 0;
+    Q.rear = Q.queuesize - 1;
+    Q.queuesize += Q.incrementsize;
+}
+
+bool SimpleEnQueue(SqQueue &Q, QElemType e) {
+    if ((Q.rear + 1) % Q.queuesize == Q.front) {
+        return false;
+    }
+    Q.elem[Q.rear] = e;
+    Q.rear = (Q.rear + 1) % Q.queuesize;
+    return true;
+}
+
 
 // Func8: Delete the head of queue, return it as e
-bool DeQueue(SqQueue &Q, ElemType &e) {
+bool DeQueue(SqQueue &Q, QElemType &e) {
     if (Q.front == Q.rear) {
         return false;
     }
