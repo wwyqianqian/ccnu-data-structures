@@ -64,7 +64,7 @@ bool GetHead(SqQueue Q, QElemType &e) {
 }
 
 
-// Func7: Insert an element 'e' to the queue
+// Func7: Insert an element 'e' to the queue, f(incrementQueuesize)
 void EnQueue(SqQueue &Q, QElemType e) {
     if ((Q.rear + 1) % Q.queuesize == Q.front) {
         incrementQueuesize(Q);
@@ -72,6 +72,7 @@ void EnQueue(SqQueue &Q, QElemType e) {
     Q.elem[Q.rear] = e;
     Q.rear = (Q.rear + 1) % Q.queuesize;
 }
+
 
 void incrementQueuesize(SqQueue &Q) {
     QElemType a[];
