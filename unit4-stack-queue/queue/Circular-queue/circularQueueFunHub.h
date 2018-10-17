@@ -64,50 +64,40 @@ bool GetHead(SqQueue Q, ElemType &e) {
 }
 
 
-// 
+// Func7: Insert an element 'e' to the queue
+void EnQueue(SqQueue &Q, ElemType e) {
+    if ((Q.rear + 1) % Q.queuesize == Q.front) {
+        incrementQueuesize(Q);
+    }
+    Q.elem[Q.rear] = e;
+    Q.rear = (Q.rear + 1) % Q.queuesize;
+}
 
 
+// Func8: Delete the head of queue, return it as e
+bool DeQueue(SqQueue &Q, ElemType &e) {
+    if (Q.front == Q.rear) {
+        return false;
+    }
+    e = Q.elem[Q.front];
+    Q.front = (Q.front + 1) % Q.queuesize;
+    return true;
+}
 
 
+// Func9: Output every element of the existing queue
+bool QueueTraverse(SqQueue Q) {
+    if (Q.front == Q.rear) {
+        return false;
+    }
+    QElemType i = Q.front;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    for (i; i != Q.rear; i = (i + 1) % Q.queuesize) {
+        cout < Q.elem[i] < " ";
+    }
+    cout << Q.elem[Q.rear] << endl;
+    return true;
+}
 
 
 #endif
