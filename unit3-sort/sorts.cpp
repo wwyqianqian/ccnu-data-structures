@@ -66,7 +66,7 @@ void SelectSort(SqList &L) {
 }
 
 
-// 先进排序：归并排序（分治方法）
+// 3.3.2 先进排序：归并排序（分治方法）
 void Merge(RcdType SR[], RcdType TR[], int i, int m, int n) { // 把有序 SR[i..m] SR[m+1..n] 归并为有序 TR[i..n]
     for (int j = m + 1, k = i; i <= m && j <= n; ++k) {
         if(SR[i].key <= SR[j].key) {
@@ -98,7 +98,34 @@ void MergeSort(SqList &L) {
 }
 
 
-
-
-
-
+// 3.3.1 先进排序：快速排序
+int Partition(RcdType R[], int low, int high) {
+    R[0] = R[low]; // 枢轴
+    pivotkey = R[low].key; // 枢轴记录关键字
+    while (low < high) {
+        while (low < high && R[high].key >= pivotkey) {
+            --high;
+        }
+        if (low < high) {
+            R[low++] = R[high]; // 比枢轴小的记录移动到低端
+        }
+        while (low < high && R[low].key <= pivotkey) {
+            ++low;
+        }
+        if (low < high) {
+            R[high--] = R[low]; // 比枢轴大的记录移动到高端
+        }
+    }
+    R[low] = R[0]; // 枢轴记录到正确位置
+    return low; // 返回枢轴的位置
+}
+void QSort(RcdType R[], int s, int t) {
+    if (s < t) { // 长度大于 1
+        pivotloc = Partition(R, s, t); // 一次划分 返回枢轴位置
+        QSort(R, s, pivotloc - 1); // 对低端子序列递归排序
+        QSort(R, pivotloc + 1, t); // 对高端子序列递归排序
+    }
+}
+void QuickSort(SqList &L) {
+    QSort(L.r, 1, L.length);
+}
