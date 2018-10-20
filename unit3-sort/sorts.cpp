@@ -66,3 +66,39 @@ void SelectSort(SqList &L) {
 }
 
 
+// 先进排序：归并排序（分治方法）
+void Merge(RcdType SR[], RcdType TR[], int i, int m, int n) { // 把有序 SR[i..m] SR[m+1..n] 归并为有序 TR[i..n]
+    for (int j = m + 1, k = i; i <= m && j <= n; ++k) {
+        if(SR[i].key <= SR[j].key) {
+            TR[k] = SR[i++];
+        } else {
+            TR[k] = SR[j++];
+        }
+    }
+    while (i <= m) {
+        TR[k++] = SR[i++];
+    }
+    while (j <= n) {
+        TR[k++] = SR[j++];
+    }
+}
+void MSort(RcdType SR[], RcdType TR1[], int s, int t) {
+    RcdType TR2[n]; // 辅助空间
+    if (s == t) {
+        TR1[s] = SR[s];
+    } else {
+        m = (s + t) / 2;
+        MSort(SR, TR2, s, m);
+        MSort(SR, TR2, m + 1, t);
+        Merge(TR2, TR1, s, m, t);ß
+    }
+}
+void MergeSort(SqList &L) {
+    MSort(L.r, L.r, 1, L.length);
+}
+
+
+
+
+
+
