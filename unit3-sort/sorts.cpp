@@ -129,3 +129,50 @@ void QSort(RcdType R[], int s, int t) {
 void QuickSort(SqList &L) {
     QSort(L.r, 1, L.length);
 }
+
+
+// 3.4 先进排序：基数排序
+//#define MAX_NUM_OF_KEY 6
+//#define RADIX 10
+//#define MAXSIZE 10000
+typedef char InfoType;
+
+typedef struct {
+    KeysType keys[MAX_NUM_OF_KEY];
+    InfoType otherItems;
+    int bitSum; // 关键字的位数
+} RcdType;
+
+void RadixSort(SqList &L) {
+    RcdType C[L.length]; // 同等大小辅助空间
+    i = bitsum - 1;
+    while (i >= 0) {
+        RadixPass(L.r, C, L.length, i);
+        i--;
+        if (i >= 0) {
+            RadixPass(C, L.r, L.length, i);
+            i--;
+        } else {
+            for (j = 0; j < L.length; ++j) {
+                L.r[j] = C[j];
+            }
+        }
+    }
+}
+
+void RadixPass(RcdType A[], RcdType B[], int n, int i) {
+    for (int j = 0; j < RADIX; ++j) {
+        count[j] = 0;
+    }
+    for (int k = 0; k < n; ++k) {
+        count[A[k].keys[i]]++;
+    }
+    for (j = 1; j < RADIX; ++j) {
+        count[j] = count[j - 1] + count[j];
+    }
+    for (int k = n - 1; k >= 0; --k) {
+        j = A[k].keys[i];
+        B[count[j] - 1] = A[k];
+        count[j]--;
+    }
+}
