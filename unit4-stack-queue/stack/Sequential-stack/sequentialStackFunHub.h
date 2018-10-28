@@ -2,8 +2,8 @@
 #define SEQUENTIAL_STACK_FUNCTION_HUB_H
 using namespace std;
 
-const STACK_INIT_SIZE = 100;
-const STACKINCREMENT = 10;
+const int STACK_INIT_SIZE = 100;
+const int STACKINCREMENT = 10;
 
 typedef int SElemType;
 typedef struct {
@@ -25,7 +25,7 @@ void InitStack(SqStack &S) {
 void DestroyStack(SqStack &S) {
     if (!S.elem) {
         cout << "error";
-        return ERROR;
+       
     }
     delete S.elem;
     S.top = -1;
@@ -37,7 +37,7 @@ void DestroyStack(SqStack &S) {
 void ClearStack(SqStack &S) {
     if (!S.elem) {
         cout << "error";
-        return ERROR;
+       
     }
     S.top = -1;
 }
@@ -62,6 +62,8 @@ bool GetTop(SqStack S, SElemType &e) {
         return false;
     }
     e = S.elem[S.top];
+    return true;
+    S.elem[++S.top] = e;
     return true;
 }
 
@@ -89,6 +91,7 @@ bool StackTraverse(SqStack S) {
         return false;
     }
     while (S.top != -1) {
+    	int e = 0;
         Pop(S, e);
         cout << e << " ";
     }
