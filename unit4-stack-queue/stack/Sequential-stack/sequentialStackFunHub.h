@@ -63,8 +63,6 @@ bool GetTop(SqStack S, SElemType &e) {
     }
     e = S.elem[S.top];
     return true;
-    S.elem[++S.top] = e;
-    return true;
 }
 
 // Function7: Push an element 'e' to the stack // 待完善（拓容）
@@ -91,7 +89,7 @@ bool StackTraverse(SqStack S) {
         return false;
     }
     while (S.top != -1) {
-    	int e = 0;
+        int e = 0;
         Pop(S, e);
         cout << e << " ";
     }
