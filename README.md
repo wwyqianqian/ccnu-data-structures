@@ -36,7 +36,7 @@
     * [手写有头结点链队列的 9 种操作头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit4-stack-queue/queue/Linked-queue/linkedQueueWithHeadFunHub.h)
   * 循环队列
     * [手写循环队列的 9 种操作的头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit4-stack-queue/queue/Circular-queue/circularQueueFunHub.h)
-    * 使用循环队列实现杨辉三角
+    * [**实验课上机6:**使用循环队列实现杨辉三角](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit4-stack-queue/queue/Circular-queue/YangHui.cpp)
 
 #### 章末测试卷编程题目解答
 
