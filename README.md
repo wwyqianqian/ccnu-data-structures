@@ -38,6 +38,16 @@
     * [手写循环队列的 9 种操作的头文件](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit4-stack-queue/queue/Circular-queue/circularQueueFunHub.h)
     * [**实验课上机6**:使用循环队列实现杨辉三角](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit4-stack-queue/queue/Circular-queue/YangHui.cpp)
 
+#### 第五章串和数组
+
+* 串
+  * [手写串的 12 种操作](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit5-string/stringListFunHub.h)
+
+#### 第六章树和森林
+
+* 树
+  * [**实验课上机7**: 构造一颗树，并使用先序、中序、后序、层次遍历输出结果。其中层次遍历要求使用链队列而不是顺序队列。](https://github.com/wwyqianqian/ccnu-data-structures/blob/master/unit6-tree/createBiTree.cpp)  
+
 #### 章末测试卷编程题目解答
 
 * 第二章检测卷
