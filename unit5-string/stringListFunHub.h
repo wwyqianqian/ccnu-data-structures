@@ -108,7 +108,7 @@ bool SubString(String &Sub, String S, int pos, int len) { // atom
 }
 
 
-// Function8: 
+// Function8: 模式匹配（朴素/KMP）
 int Index(S, T, pos);
 void Replace(&S, T, V);
 void StrInsert(&S, pos, T);
