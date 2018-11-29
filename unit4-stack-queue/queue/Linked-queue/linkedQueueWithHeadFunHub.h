@@ -12,7 +12,7 @@ typedef LinkList QueuePtr;
 typedef struct {
     QueuePtr front;
     QueuePtr rear;
-}LinkQueue;
+} LinkQueue;
 
 
 // Func1: Initialize a linked queue
@@ -80,7 +80,7 @@ bool GetHead(LinkQueue Q, ElemType &e) {
 
 // Func7: Insert an element 'e' to the queue
 void EnQueue(LinkQueue &Q, ElemType e) {
-    LinkList *p = new LNode;
+    LNode *p;
     p->data = e;
     p->next = nullptr;
     Q.rear->next = p; // tail
