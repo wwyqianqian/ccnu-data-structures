@@ -80,7 +80,7 @@ bool GetHead(LinkQueue Q, ElemType &e) {
 
 // Func7: Insert an element 'e' to the queue
 void EnQueue(LinkQueue &Q, ElemType e) {
-    LNode *p;
+    QueuePtr p = new LNode;
     p->data = e;
     p->next = nullptr;
     Q.rear->next = p; // tail
