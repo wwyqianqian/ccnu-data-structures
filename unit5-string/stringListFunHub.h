@@ -109,10 +109,48 @@ bool SubString(String &Sub, String S, int pos, int len) { // atom
 
 
 // Function8: 模式匹配（朴素/KMP）
-int Index(S, T, pos);
+int Index(Sting S, String T, int pos) {
+    int i = pos; int j = 0;
+    while (S[i + j] != '\0' && T[j] != '\0') {
+        if (S[i + j] == T[j]) {
+            j++;
+        } else {
+            i++;
+            j = 0;
+        }
+    }
+    if (T[j] == '\0') {
+        return i;
+    } else {
+        return -1;
+    }
+}
+
+
+// Function9: 
 void Replace(&S, T, V);
 void StrInsert(&S, pos, T);
 void StrDelete(&S, pos, len);
 void DestroyString(&S);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif
